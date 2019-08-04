@@ -1,0 +1,12 @@
+tpentzien/hcc/
+
+             .git/   
+             science/                  
+                  subfolder/             
+                        Singularity       (--- vsoch/hello-world:latest
+                        Singularity.gpu   (--- vsoch/hello-world:gpu
+
+             fruits/                     
+                  tomatoes/
+                        Singularity.avocado       (--- vsoch/hello-world:avocado
+                        Singularity.tomato        (--- vsoch/hello-world:tomato
