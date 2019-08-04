@@ -1,12 +1,22 @@
-tpentzien/hcc/
+Bootstrap:docker  
+From:ubuntu:16.04
 
-             .git/   
-             science/                  
-                  subfolder/             
-                        Singularity       (--- vsoch/hello-world:latest
-                        Singularity.gpu   (--- vsoch/hello-world:gpu
+%labels
+MAINTAINER Vanessasaur
+SPECIES Dinosaur
 
-             fruits/                     
-                  tomatoes/
-                        Singularity.avocado       (--- vsoch/hello-world:avocado
-                        Singularity.tomato        (--- vsoch/hello-world:tomato
+%environment
+RAWR_BASE=/code
+export RAWR_BASE
+
+%runscript
+echo "This gets run when you run the image!" 
+exec /bin/bash /code/rawr.sh "$@"  
+
+%post  
+echo "This section happens once after bootstrap to build the image."  
+mkdir -p /code  
+apt-get install vim  
+echo "RoooAAAAR" >> /code/rawr.sh
+chmod u+x /code/rawr.sh  
+
