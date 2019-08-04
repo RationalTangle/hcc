@@ -1,0 +1,68 @@
+Bootstrap: docker
+From: ubuntu:latest
+
+%environment
+
+	#Environment variables
+
+	#Use bash as default shell
+	SHELL=/bin/bash
+
+	#Add Anaconda path
+	PATH="/usr/local/anaconda2/bin:$PATH"
+
+	export PATH
+
+
+%setup
+	#Runs on host
+	#The path to the image is $SINGULARITY_ROOTFS
+
+
+
+%post
+	#Post setup script
+
+	#Load environment variables
+	. /environment
+
+	#Default mount paths
+	mkdir /scratch /data /shared /fastdata
+
+
+  #Updating and getting required packages
+  apt-get update
+  apt-get install -y wget git vim
+
+  #Creates a build directory
+  mkdir build
+  cd build
+
+  #Download and install Anaconda
+  CONDA_INSTALL_PATH="/usr/local/anaconda2"
+  wget https://repo.anaconda.com/archive/Anaconda2-2019.07-Linux-x86_64.sh
+  chmod +x Anaconda2-2019.07-Linux-x86_64.sh
+  ./Anaconda2-2019.07-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
+
+  #Make sure we have some nice things
+  conda install matplotlib
+  conda install pandas
+  conda install seaborn
+  conda install dask
+  conda install networkx
+  conda install pytables
+
+
+  #Install dynpy
+  pip install dynpy
+
+  #Install CANA
+  pip install cana
+
+%runscript
+	#Executes with the singularity run command
+	#delete this section to use existing docker ENTRYPOINT command
+
+
+%test
+	#Test that script is a success
