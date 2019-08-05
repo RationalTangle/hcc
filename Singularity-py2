@@ -32,7 +32,9 @@ From: ubuntu:latest
 
   #Updating and getting required packages
   apt-get update
-  apt-get install -y wget git vim
+  apt-get install -y wget git vim build-essential
+  apt-get install -y libssl-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev
+  apt-get install -y libgdbm-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev libffi-dev uuid-dev
 
   #Creates a build directory
   mkdir build
