@@ -46,6 +46,9 @@ From: ubuntu:latest
   chmod +x Anaconda2-2019.07-Linux-x86_64.sh
   ./Anaconda2-2019.07-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
 
+  #Install PyQt5 (apparently needed for part of matplotlib)
+  conda install pyqt
+  
   #Make sure we have some nice things
   conda install matplotlib
   conda install pandas
@@ -60,8 +63,7 @@ From: ubuntu:latest
   #Install CANA
   pip install cana
 
-  #Install PyQt5 (apparently needed for part of matplotlib)
-  pip install PyQt5
+
 
 %runscript
 	#Executes with the singularity run command
