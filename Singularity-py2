@@ -50,7 +50,6 @@ From: ubuntu:latest
   conda install pyqt  
   
   #Make sure we have some nice things
-  conda install matplotlib
   conda install pandas
   conda install seaborn
   conda install dask
@@ -62,7 +61,9 @@ From: ubuntu:latest
 
   #Install CANA
   pip install cana
-
+  
+  #Install Matplotlib
+  pip install matplotlib
 
 
 %runscript
