@@ -47,7 +47,8 @@ From: ubuntu:latest
   ./Anaconda2-2019.07-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
 
   #Install PyQt5 (apparently needed for part of matplotlib)
-  pip install PyQt5  
+  #pip install PyQt5  
+  # for some reason we can't install PyQt5 with pip
   
   #Make sure we have some nice things
   conda install pandas
