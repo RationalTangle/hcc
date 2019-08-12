@@ -62,7 +62,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
   /usr/local/anaconda3/bin/conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
   
   #install nice stuff
-  /usr/local/anaconda3/bin/conda install -y numba bcolz networkx dask seaborn pandas numexpr
+  /usr/local/anaconda3/bin/conda install -y numba bcolz networkx dask seaborn pandas numexpr unidecode
   
   #install boolean network stuff
   /usr/local/anaconda3/bin/pip install -U dynpy cana
