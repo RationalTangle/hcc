@@ -70,7 +70,7 @@ From: nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
   /usr/local/anaconda3/bin/conda install mamba -n base -c conda-forge
 
   #install pytorch
-  /usr/local/anaconda3/bin/mamba install pytorch torchvision cudatoolkit=11.1 -c pytorch -c conda-forge
+  /usr/local/anaconda3/bin/mamba install pytorch torchvision torchtext cudatoolkit=11.1 -c pytorch -c conda-forge
   
   #install nice stuff
   /usr/local/anaconda3/bin/mamba install -y numba bcolz zarr networkx dask seaborn pandas numexpr unidecode ipython pypy -c conda-forge
@@ -80,6 +80,12 @@ From: nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
   
   #install other pip stuff (including tensorflow+keras)
   /usr/local/anaconda3/bin/pip install fastai matplotlib graphillion tensorflow keras pytorch-lightning
+  
+  #install pytorch geometric
+  /usr/local/anaconda3/bin/pip install torch-scatter
+  /usr/local/anaconda3/bin/pip install torch-cluster
+  /usr/local/anaconda3/bin/pip install torch-spline-conv
+  /usr/local/anaconda3/bin/pip install torch-geometric
 
   #conda cleanup
   /usr/local/anaconda3/bin/conda clean -ya
