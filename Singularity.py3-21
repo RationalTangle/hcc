@@ -47,7 +47,13 @@ From: nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
   echo 'export CUDA_HOME="/usr/local/cuda"' >> /environment
 
   # updating and getting required packages
-  apt-get update
+  apt-get -qq -y  update
+ 
+  export DEBIAN_FRONTEND=noninteractive
+  apt-get -qq install -y --no-install-recommends tzdata apt-utils 
+  ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
+  dpkg-reconfigure --frontend noninteractive  tzdata
+
   apt-get install -y wget git vim build-essential cmake
 
   # creates a build directory
@@ -56,17 +62,18 @@ From: nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
 
   # download and install Anaconda
   CONDA_INSTALL_PATH="/usr/local/anaconda3"
-  wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
-  chmod +x Anaconda3-2020.07-Linux-x86_64.sh
-  ./Anaconda3-2020.07-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
+  wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh  
+  chmod +x Anaconda3-2020.11-Linux-x86_64.sh
+  ./Anaconda3-2020.11-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
 
-  #install mamba 
-  /usr/local/anaconda3/bin/conda install -y mamba
+  #install mamba
+  /usr/local/anaconda3/bin/conda install mamba -n base -c conda-forge
+
   #install pytorch
-  /usr/local/anaconda3/bin/mamba install install pytorch torchvision cudatoolkit=11.1 -c pytorch -c conda-forge
+  /usr/local/anaconda3/bin/mamba install pytorch torchvision cudatoolkit=11.1 -c pytorch -c conda-forge
   
   #install nice stuff
-  /usr/local/anaconda3/bin/mamba install -y numba bcolz networkx dask seaborn pandas numexpr unidecode ipython pypy
+  /usr/local/anaconda3/bin/mamba install -y numba bcolz zarr networkx dask seaborn pandas numexpr unidecode ipython pypy -c conda-forge
   
   #install boolean network stuff
   /usr/local/anaconda3/bin/pip install -U dynpy cana
